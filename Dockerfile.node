@@ -1,0 +1,15 @@
+# Dockerfile.node
+FROM node:latest
+
+WORKDIR /var/www/html
+
+# Copy package.json and package-lock.json (or yarn.lock)
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+RUN npm install @inertiajs/vue3
+# RUN npm install vite --save-dev
+
+# Copy the rest of the application
+COPY . .
